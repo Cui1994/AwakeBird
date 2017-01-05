@@ -1,0 +1,18 @@
+{% macro render_field(field) %}
+    {{ field(**kwargs)|safe }}
+    {{ field.label }}
+
+    {% if field.errors %}
+    <ul class="errors red-text lighten-3 right">
+        {% for error in field.errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+{% endmacro %}
+
+{% macro get_flash_message_html(msg) %}
+    <script>
+        alert('{{ msg|safe }}')
+    </script>
+{% endmacro %}

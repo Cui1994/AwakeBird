@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% from 'macros/main.html' import render_field %}
+
+{% block head %}
+{{ super() }}
+<script src="{{ url_for('static', filename='ckeditor/ckeditor.js') }}"></script>
+{% endblock %}
+
+{% block container %}
+<form action="{{ url_for('main.write') }}" method="post">
+    {{ form.hidden_tag() }}
+    <h2 class="header">新文章</h2>
+    <div class="input-field">
+        {{ render_field(form.title) }}
+    </div>
+    <div style="height:600px;max-height:600px">
+        {{ form.body(id="editor1") }}
+    </div>
+    {% if form.body.errors %}
+        <ul class="errors red-text lighten-3 right">
+            {% for error in form.body.errors %}
+            <script>
+                alert('{{ error }}')
+            </script>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <br />
+    <div class="row">
+        <button class="btn waves-effect waves-light right" type="submit" name="action">发布文章</button>
+    </div>
+</form>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script>
+// 用CKEditor替换<textarea id="editor1">
+// 使用默认配置
+    CKEDITOR.replace('editor1', {
+        height: 500,
+        filebrowserUploadUrl: '/ckupload/',
+    });
+</script>
+{% endblock %}
+

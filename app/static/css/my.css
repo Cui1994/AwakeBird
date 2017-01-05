@@ -1,0 +1,13 @@
+.flash-message {
+    padding: 1em;
+    width: 100%;
+}
+.error-message {
+    padding: 1em;
+}
+.error-message .material-icons {
+    vertical-align: middle;
+}
+.error-message .message-detail {
+    vertical-align: middle;
+}

@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}User{% endblock %}
+
+{% block container %}
+    <div class="col s12 m6">
+        <div class="card horizontal">
+            <div class="card-image">
+                <img src="/static/images/jack.jpg" width="180px" height="180px" style="margin:5px; position:relative;">
+            </div>
+            <div class="card-stacked">
+                <div class="card-content">
+                    <h5><i class="material-icons left">assignment_ind</i>{{ username }}</h5>
+                    <p>男</p>
+                    <p>22岁</p>
+                    <p>互联网相关</p>
+                </div>
+            </div>
+            <div style="margin-right:10px; margin-top:145px; position:relative;">
+                <a href="#" class="waves-effect waves-light btn blue"><i class="material-icons left">visibility</i>关注</a>
+                <a href="#" class="waves-effect waves-light btn red"><i class="material-icons left">visibility_off</i>取消关注</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="chip">
+        <img src="/static/images/jack.jpg" alt="Contact Person">
+            Jane Doe
+    </div>
+
+    <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">perm_identity</i></a>
+
+    <!-- Page Layout here -->
+    <div class="row">
+
+        <div class="col s3">
+        <!-- Grey navigation panel -->
+            <div class="collection with-header">
+                <li class="collection-header">文章分类</li>
+                <a href="#!" class="collection-item"><span class="badge">1</span>Python</a>
+                <a href="#!" class="collection-item"><span class="badge">8</span>MySQL</a>
+                <a href="#!" class="collection-item"><span class="badge">11</span>爬虫</a>
+                <a href="#!" class="collection-item"><span class="badge">11</span>爬虫</a>
+            </div>
+
+            <div class="card darken-1">
+                <div class="row center">
+                <div class="card-action">
+                    <a href="#">关注了：88</a>
+                    <br/>
+                    <a href="#">关注者：203</a>
+                </div>
+                </div>
+          </div>
+
+        </div>
+
+        <div class="col s9">
+        <!-- Teal page content  -->
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title">MySQL实战秘籍</span>
+                    <p>I am a very simple card. I am good at containing small bits of information.
+                    I am convenient because I require little markup to use effectively.</p>
+                </div>
+                <div class="card-action">
+                <a href="#">查看全文</a>
+                <a href="#">编辑</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block container %}
+<div class="row">
+    <div class="col s9">
+        {% for post in posts %}
+            <div class="row">
+                <hr/>
+                <div class="col s1">
+                    <img src="/static/images/jack.jpg" width="60px" height="60px" style="margin-top:7px; position:relative;">
+                </div>
+                <div class="col s11">
+                    <h6 class="grey-text"><a class="grey-text text-darken-2" href="{{ url_for('main.user', username=post.author.username) }}">
+                        {{ post.author.username }}</a> 发表了文章 - {{ moment(post.timestamp).fromNow() }}</h6>
+                    <h5 class="blue-text">{{ post.title }}</h5>
+                    <div style="word-break:break-word;">
+                        <p>{{ post.body|safe }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="col s3">
+        <ul class="collapsible" data-collapsible="accordion">
+            <li>
+                <div class="collapsible-header"><span class="new badge">4</span><i class="material-icons">filter_drama</i>First</div>
+                <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+            </li>
+            <li>
+                <div class="collapsible-header"><span class="badge">1</span><i class="material-icons">place</i>Second</div>
+                <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
