@@ -7,14 +7,25 @@
             <div class="row">
                 <hr/>
                 <div class="col s1">
-                    <img src="/static/images/jack.jpg" width="60px" height="60px" style="margin-top:7px; position:relative;">
+                    <img src="{{ post.author.avatar_url }}" width="60px" height="60px" style="margin-top:7px; position:relative;">
                 </div>
                 <div class="col s11">
                     <h6 class="grey-text"><a class="grey-text text-darken-2" href="{{ url_for('main.user', username=post.author.username) }}">
                         {{ post.author.username }}</a> 发表了文章 - {{ moment(post.timestamp).fromNow() }}</h6>
-                    <h5 class="blue-text">{{ post.title }}</h5>
+                    <h5><a class="indigo-text text-darken-4" href="{{ url_for('main.post', id=post.id) }}">{{ post.title }}</a></h5>
                     <div style="word-break:break-word;">
-                        <p>{{ post.body|safe }}</p>
+                        <p>{{ post.body|safe |truncate(100, True) }} <a class="grey-text text-darken-1" href="#modal{{ post.id }}">查看全文</a></p>
+                    </div>
+                    <a class="waves-effect waves-teal btn-flat" href="{{ url_for('main.collect', id=post.id) }}">收藏</a>
+                </div>
+                <!-- Modal Structure -->
+                <div id="modal{{ post.id }}" class="modal modal-fixed-footer">
+                    <div class="modal-content">
+                        <h4>{{ post.title }}</h4>
+                        {{ post.body|safe }}
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">关闭</a>
                     </div>
                 </div>
             </div>
@@ -34,4 +45,14 @@
     </div>
 </div>
 {% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script>
+$(document).ready(function() {
+  $('.modal').modal();
+});
+</script>
+{% endblock %}
+
 
